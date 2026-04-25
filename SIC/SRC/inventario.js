@@ -14,4 +14,15 @@ function registraDispositivo(nome,tipologia, seriale){
     dispositivi.push(nuovo);
     return nuovo;
 }
-module.exports={registraDispositivo,dispositivi,StatiValidi};
+
+function aggiornaDispositivo(id, nuovoStato, nota=""){
+    const dispositivo= dispositivi.find(d=>d.id==id);
+    if(!dispositivo||!Object.values(StatiValidi).includes(nuovoStato)) return false;
+    dispositivo.stato=nuovoStato;
+    if(nota){
+        if(!dispositivo.manutenzioni)dispositivo.manutenzioni=[]; 
+        dispositivo.manutenzioni.push({data:new Date().toLocaleDateString(),nota});
+    }
+    return true;
+}
+module.exports={registraDispositivo,dispositivi,StatiValidi,aggiornaDispositivo};
