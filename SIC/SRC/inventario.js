@@ -29,4 +29,21 @@ function aggiornaDispositivo(id, nuovoStato, nota=""){
 function filtraPerStato(stato){
     return dispositivi.filter(d=>d.stato===stato);
 }
-module.exports={registraDispositivo,dispositivi,StatiValidi,aggiornaDispositivo,filtraPerStato};
+
+function esportaJSON(){
+    try{
+        const data = JSON.stringify(dispositivi, null ,2 );
+        fs.writeFileSync("inventario.json", data);
+        return "Inventario esportato in 'inventario.json'";
+    }catch(error){
+        return "Errore durante l'esportazione del file: "+ error.message;
+    }
+}
+module.exports={
+    registraDispositivo,
+    dispositivi,
+    StatiValidi,
+    aggiornaDispositivo,
+    filtraPerStato,
+    esportaJSON,
+};
