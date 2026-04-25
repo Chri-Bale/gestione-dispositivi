@@ -25,4 +25,8 @@ function aggiornaDispositivo(id, nuovoStato, nota=""){
     }
     return true;
 }
-module.exports={registraDispositivo,dispositivi,StatiValidi,aggiornaDispositivo};
+
+function filtraPerStato(stato){
+    return dispositivi.filter(d=>d.stato===stato);
+}
+module.exports={registraDispositivo,dispositivi,StatiValidi,aggiornaDispositivo,filtraPerStato};
