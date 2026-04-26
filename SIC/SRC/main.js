@@ -1,6 +1,9 @@
 const input = require("prompt-sync")();
 const f = require("./inventario");
 
+/**
+ * Stampa il menu delle opzioni disponibili all'utente
+ */
 function menu() {
     console.log("\n--- GESTIONE INVENTARIO DISPOSITIVI ---");
     console.log("1. Registra nuovo dispositivo");
